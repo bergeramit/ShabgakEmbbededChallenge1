@@ -58,7 +58,7 @@ this means that every 4 cycles a second is passed
 
 > so the total number of seconds is 1984 * 60 = 119040 seconds and every cycle is 0.25 seconds.
 
-# a == 2 and a == 
+## a == 2 and a == 3 
 We can see the the saves happen in the "ISR(TIMER1_COMPA_vect)" but ios influences on the state of the boolean _is_triggered_.
 the cycles it takes to save is different depending on the state of this var.
 If a == 2 then the cycles until save is: 15 
@@ -67,10 +67,9 @@ If a == 3 then the cycles until save is: 150
 We can tell that this variable is a toggle so every time we see a record that is a ==3 or a == 2 we know the cycles-to-save counter.
 THe code apply this information and solved the challenge:
 
-## Psuedo Code
+# Psuedo Code
 every record we calculate the time it took : (cycles_for_this_record) / 4
 and we substruct it from the time left,
 on a == 3 or a == 2 we configure the number of cycles for each record accordingly
 and when the time left is 0 we print the coordinates
 
->
