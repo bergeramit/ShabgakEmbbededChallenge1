@@ -68,8 +68,8 @@ We can tell that this variable is a toggle so every time we see a record that is
 THe code apply this information and solved the challenge:
 
 # Psuedo Code
-every record we calculate the time it took : (cycles_for_this_record) / 4
-and we substruct it from the time left,
-on a == 3 or a == 2 we configure the number of cycles for each record accordingly
-and when the time left is 0 we print the coordinates
+- every record we calculate the time it took : (cycles_for_this_record) / 4
+- we substruct it from the time left,
+- on a == 3 or a == 2 we configure the number of cycles for each record accordingly
+- when the time left is 0 we print the coordinates
 
