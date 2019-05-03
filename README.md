@@ -26,7 +26,7 @@ while(1)
  RECORD rec;
 }
 ```
-This leads us to see that the whole memory (other than a record 0x4fff) was saved thjis way.
+This leads us to see that the whole memory (other than a record 0x4fff) was saved this way.
 
 ## Getting to know the formats
 
