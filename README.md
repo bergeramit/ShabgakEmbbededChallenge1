@@ -48,14 +48,18 @@ This interrupt depends on the CPU (which we know is 16MHz) the params in the "co
      TCCR1B |= (1 << CS12) | (1 << CS10);
      TIMSK1 |= (1 << OCIE1A);
 ```
-Set CS10 and CS12 bits for 1024 prescaler, on 16MHz CPU and 
-By the formula: 
+We see that the compare match register is 62499 which is equal to:
 ```
-(16*10^6) / (x*1024) - 1 = 62499
+(16*10^6) / (x * prescalar) - 1 = 62499
 ```
-x is the ratio of seconds to cycles which is 4
+Where x is the interrupt frequency.
+In addition, CS10 and CS12 bits is set for 1024 prescaler, on 16MHz CPU
+so the equasion is:
+```
+(16*10^6) / (x * 1024) - 1 = 62499
+```
+Which means that x is equal 4 cycles/second => the interupt frequency 4Hz
 this means that every 4 cycles a second is passed
-
 > so the total number of seconds is 1984 * 60 = 119040 seconds and every cycle is 0.25 seconds.
 
 ## a == 2 and a == 3 
@@ -65,7 +69,7 @@ If a == 2 then the cycles until save is: 15
 If a == 3 then the cycles until save is: 150
 
 We can tell that this variable is a toggle so every time we see a record that is a ==3 or a == 2 we know the cycles-to-save counter.
-THe code apply this information and solved the challenge:
+The code apply this information and solved the challenge:
 
 # Psuedo Code
 - every record we calculate the time it took : (cycles_for_this_record) * 4
